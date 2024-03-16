@@ -1,0 +1,93 @@
+#!/bin/bash
+
+do_backup() {
+  clear
+  echo "Fazendo backup..."
+  cd /root/paineldtunnel || exit 1
+  cp prisma/database.db /root/painelbackup || exit 1
+  cp .env /root/painelbackup || exit 1
+  zip -r /root/painelbackup.zip /root/painelbackup || exit 1
+  echo
+  echo "Backup salvo em /root/painelbackup.zip"
+  echo
+  exit 0
+}
+
+toggle_auto_backup() {
+  clear
+  read -p "Deseja ativar o Auto Backup? (s/n) " atb
+  if [[ $atb = @(s|S) ]]; then
+    echo "Ativando..."
+    backmod
+    echo
+    echo "Backup a cada 5 horas ativado!"
+    exit 0
+  fi
+  menu
+}
+
+remove_panel() {
+  clear
+  read -p "Deseja remover o painel? (s/n) " rev
+  if [[ $rev = @(s|S) ]]; then
+    echo "Removendo..."
+    poff
+    rm /bin/pon /bin/poff /bin/menudt /bin/backmod
+    rm -r /root/paineldtunnel
+    echo "Removido com sucesso!"
+    exit 0
+  fi
+  menu
+}
+
+restore_backup() {
+  clear
+  if [[ ! -e /root/painelbackup.zip ]]; then
+    echo "Arquivo painelbackup.zip não encontrado em /root"
+    sleep 4
+    menu
+  fi
+  read -p "Deseja Restaurar o Backup? (s/n) " rapi
+  if [[ $rapi = @(s|S) ]]; then
+    echo "Restaurando..."
+    cd /root/paineldtunnel || exit 1
+    rm prisma/database.db .env || exit 1
+    unzip /root/painelbackup.zip || exit 1
+    mv /root/painelbackup/database.db prisma/ || exit 1
+    mv /root/painelbackup/.env . || exit 1
+    rm -r /root/painelbackup
+    pon
+    echo
+    echo "Backup restaurado com sucesso!"
+    exit 0
+  elif [[ $rapi = @(n|N) ]]; then
+    echo "Voltando para o menu"
+    sleep 2
+    menu
+  fi
+  menu
+}
+
+menu() {
+  clear
+  echo "Bem-vindo ao painelMod menu"
+  echo 
+  echo "1. Fazer backup"
+  echo "2. Restaurar backup"
+  echo "3. Reiniciar painel"
+  echo "4. Ativar Auto backup"
+  echo "5. Remover painel"
+  echo "0. Sair"
+  read -p "> " resp
+  case $resp in
+    1) do_backup ;;
+    2) restore_backup ;;
+    3) clear; echo "Reiniciando..."; pon; echo "Reiniciado com sucesso!"; sleep 3 ;;
+    4) toggle_auto_backup ;;
+    5) remove_panel ;;
+    0) echo "Saindo..."; exit 0 ;;
+    *) echo "Opção inválida!"; sleep 3 ;;
+  esac
+}
+
+menu
