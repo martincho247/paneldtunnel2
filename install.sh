@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-sitedwn=bitbucket.org/phoenixxz2023/paineldtunnel/downloads
+sitedwn=github.com/PhoenixxZ2023/paineldtunnel
 IP=$(wget -qO- ipv4.icanhazip.com)
 [[ "$(whoami)" != "root" ]] && {
 echo
