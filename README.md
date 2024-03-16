@@ -14,7 +14,7 @@
 <h3>• Instalação Automática</h3> <br>
 
 ```sh
-apt update -y; apt install wget -y; wget https://raw.githubusercontent.com/endblack/painelMod/main/i.sh; chmod 777 i.sh; ./i.sh
+apt update -y; apt install wget -y; wget https://raw.githubusercontent.com/PhoenixxZ2023/paineldtunnel/main/install.sh; chmod 777 install.sh; ./install.sh
 ```
 ✅ Adicionado um menu simples <br>
 • para acessar digite ```menuop``` <br>
