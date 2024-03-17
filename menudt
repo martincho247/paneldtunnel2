@@ -14,6 +14,8 @@ do_backup() {
   echo "painelbackup.zip salvo em /root"
   echo
   exit 0
+ }
+ menudt
 }
 toggle_auto_backup() {
   clear
@@ -47,7 +49,7 @@ restore_backup() {
     sleep 4
     menudt
   }
-  read -p "Deseja Restaurar o Backup? (s/n) " rapi
+  read -p "DESEJA RESTAURAR O BACKUP? (s/n) " rapi
   [[ $rapi = @(s|S) ]] && {
     echo "Restaurando..."
     cd /root/paineldtunnel
@@ -57,7 +59,7 @@ restore_backup() {
     unzip painelbackup.zip
     cd painelbackup
     mv database.db ../paineldtunnel/prisma
-    mv .env ../painelMod
+    mv .env ../paineldtunnel
     cd /root
     rm -r painelbackup
     pon
@@ -66,13 +68,13 @@ restore_backup() {
     exit 0
   }
   [[ $rapi = @(n|N) ]] && {
-    echo "Voltando para o menu"
+    echo "Voltando para o menudt"
     sleep 2
     menudt
   }
   menudt
 }
-#[[ ! -e /root/painelMod/src/index.ts ]] && exit 0
+#[[ ! -e /root/paineldtunnel/src/index.ts ]] && exit 0
 menudt() {
   clear
   echo -e "\033[1;34m╔═════════════════════════════╗\033[0m"
