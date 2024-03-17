@@ -1,27 +1,16 @@
-#!/bin/bash
+#/bin/bash
 
-# Gerar string aleatória para uso no nome do arquivo de backup
 random=$(cat /dev/urandom | tr -dc '[:alnum:]' | head -c 5)
-
-# Obter data e hora atual para uso no nome do arquivo de backup
 dato=$(date "+%d-%m-%Y_%Hh-%Mm-%Ss")
 
-# Caminho absoluto para o diretório de backup
-backup_dir="/root/backupAuto"
+#Comandos para backup
+cd /root
+[[ ! -e /root/backupAuto ]] && {
+mkdir backupAuto
+(crontab -l > /tmp/apiWaRes; echo "0 */5 * * * backmod" >> /tmp/apiWaRes; cat /tmp/apiWaRes) | crontab -
+}
+cd /root/paineldtunnel
 
-# Criar diretório de backup se não existir
-mkdir -p "$backup_dir"
-
-# Adicionar tarefa cron se ainda não estiver configurada
-if ! crontab -l | grep -q "0 */5 * * * backmod"; then
-    (crontab -l 2>/dev/null; echo "0 */5 * * * backmod") | crontab -
-fi
-
-# Copiar arquivos para o diretório de backup
-cp /root/paineldtunnel/prisma/database.db /root/paineldtunnel/.env /root/paineldtunnel/painelbackup
-
-# Compactar o diretório de backup
-zip -r "/root/backupAuto/painelbackup-$dato-$random.zip" /root/paineldtunnel/painelbackup
-
-# Remover o diretório de backup temporário
-rm -rf /root/paineldtunnel/painelbackup
+cp prisma/database.db painelbackup
+cp .env painelbackup
+zip -r /root/backupAuto/painelbackup-$dato.zip painelbackup
