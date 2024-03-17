@@ -1,8 +1,10 @@
 #!/bin/bash
-
+clear
+sitedwn=github.com/PhoenixxZ2023/paineldtunnel
+IP=$(wget -qO- ipv4.icanhazip.com)
 [[ "$(whoami)" != "root" ]] && {
 echo
-echo "Instale Com Usuário Root!"
+echo "VOCÊ PRECISA EXECUTAR INSTALAÇÃO COMO ROOT!"
 echo
 rm install.sh
 exit 0
@@ -12,14 +14,14 @@ ubuntuV=$(lsb_release -r | awk '{print $2}' | cut -d. -f1)
 
 [[ $(($ubuntuV < 20)) = 1 ]] && {
 clear
-echo "A Versão Do Ubuntu Tem Que Ser No Mínimo 20, A Sua É $ubuntuV"
+echo "FAVOR INSTALAR NO UBUNTU 20.04 OU 22.04! O SEU É $ubuntuV"
 echo
 rm /root/install.sh
 exit 0
 }
 [[ -e /root/paineldtunnel/src/index.ts ]] && {
   clear
-  echo "O Painel já está instalado, deseja remover? (s/n)"
+  echo "O Painel já está instalado. Deseja Removê-lo? (s/n)"
   read remo
   [[ $remo = @(s|S) ]] && {
   cd /root/paineldtunnel
@@ -37,10 +39,10 @@ exit 0
   exit 0
 }
 clear
-echo "Qual Porta Deseja Ativar?"
+echo "QUAL PORTA DESEJA ATIVAR?"
 read porta
 echo
-echo "Intalando Painel Dtmod..."
+echo "Instalando Painel Dtunnel Mod..."
 echo
 sleep 3
 #========================
@@ -83,7 +85,16 @@ echo
 echo "Comando para ATIVAR: pon"
 echo "Comando para DESATIVAR: poff"
 echo
-echo "Digite menudt Para ver o menu"
+echo "Digite comando--> menudt (Para ver o Menu do Painel)"
 echo
 rm /root/install.sh
 pon
+else
+clear
+echo
+echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mao prompt! \033[0m"; read
+cat /dev/null > ~/.bash_history && history -c
+rm -rf wget-log* > /dev/null 2>&1
+rm install* > /dev/null 2>&1
+clear
+fi
