@@ -2,5 +2,5 @@
 
 screen -r -S painel -X quit
 echo
-echo "Painel Dtunnel Mod Desligado(OOF)"
+echo "Painel Dtunnel Mod Desligado(OFFLINE)"
 echo
