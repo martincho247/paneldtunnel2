@@ -89,7 +89,6 @@ echo "Digite comando--> menudt (Para ver o Menu do Painel)"
 echo
 rm /root/install.sh
 pon
-else
 clear
 echo
 echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mao prompt! \033[0m"; read
@@ -97,4 +96,3 @@ cat /dev/null > ~/.bash_history && history -c
 rm -rf wget-log* > /dev/null 2>&1
 rm install* > /dev/null 2>&1
 clear
-fi
