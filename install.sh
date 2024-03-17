@@ -85,11 +85,11 @@ echo
 echo "Comando para ATIVAR: pon"
 echo "Comando para DESATIVAR: poff"
 echo
-echo "Digite comando--> menudt (Para ver o Menu do Painel)"
+echo -e "\033[1;36mDigite comando: \033[1;37mmenudt \033[1;32m(Para acessar o Menu do Painel) \033[0m"
 echo
 rm /root/install.sh
 pon
-echo -e "\033[1;36m SEU PAINEL:\033[1;37m http://$IP\033[0m"
+echo -e "\033[1;36mSEU PAINEL: \033[1;37m http://$IP\033[0m"
 echo
 echo -ne "\n\033[1;31mENTER \033[1;33mPara Retornar \033[1;32mAo Prompt! \033[0m"; read
 cat /dev/null > ~/.bash_history && history -c
