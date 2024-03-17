@@ -85,9 +85,13 @@ menudt() {
   case $resp in
     1) 
     do_backup 
+    sleep 3
+    menudt
     ;;
     2) 
     restore_backup 
+    sleep 3
+    menudt
     ;;
     3) 
     clear
@@ -99,6 +103,8 @@ menudt() {
     ;;
     4) 
     toggle_auto_backup 
+    sleep 3
+    menudt
     ;;
     5) 
     remove_panel 
