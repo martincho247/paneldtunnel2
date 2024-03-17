@@ -111,11 +111,9 @@ menu() {
     clear
     exit;
     ;;
-    *)
-    echo -e "\n\033[1;31mOpcao invalida !\033[0m"
-    sleep 2
+    *) echo "Opção inválida!"; sleep 3 
     ;;
-esac
-done
+  esac
 }
+
 menudt
