@@ -3,7 +3,7 @@
 </h1>
 
 <h4>Painel Exclusivo Para Dtmod</h4>
-• 📌 Funciona a partir do ubuntu 20 
+• 📌 COMPATIVEL COM UBUNTU 20 E UBUNTU 22 
 
 <br> <p align="center">
  <img src="https://img.shields.io/static/v1?label=DTunnel&message=Mod&color=E51C44&labelColor=0A1033" />
