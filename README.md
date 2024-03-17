@@ -18,6 +18,7 @@ apt update -y; apt install wget -y; wget https://raw.githubusercontent.com/Phoen
 ````
 
 
+
 ✅ Adicionado um menu simples <br>
 • para acessar digite ```menudt``` <br>
 • Comando pra ativar/reiniciar ```pon``` <br>
