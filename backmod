@@ -18,7 +18,7 @@ if ! crontab -l | grep -q "0 */5 * * * backmod"; then
 fi
 
 # Copiar arquivos para o diretório de backup
-cp /root/painelMod/prisma/database.db /root/paineldtunnel/.env /root/paineldtunnel/painelbackup
+cp /root/paineldtunnel/prisma/database.db /root/paineldtunnel/.env /root/paineldtunnel/painelbackup
 
 # Compactar o diretório de backup
 zip -r "/root/backupAuto/painelbackup-$dato-$random.zip" /root/paineldtunnel/painelbackup
