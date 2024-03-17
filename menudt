@@ -86,8 +86,8 @@ menu() {
     1) 
     do_backup
     echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mmenudt \033[0m"; read
-    menudt
     sleep 3
+    menudt
     ;;
     2) 
     restore_backup 
@@ -107,7 +107,7 @@ menu() {
     ;;
     0) 
     echo "Saindo...
-    exit 0 
+    break
     ;;
     *) 
     echo "Opção inválida!
@@ -115,5 +115,4 @@ menu() {
     ;;
 esac
 done
-}
 menudt
