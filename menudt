@@ -15,7 +15,7 @@ do_backup() {
 
 toggle_auto_backup() {
   clear
-  read -p "Deseja ativar o Auto Backup? (s/n) " atb
+  read -p "DESEJA ATIVAR AUTO BACKUP? (s/n) " atb
   if [[ $atb = @(s|S) ]]; then
     echo "Ativando..."
     backmod
@@ -28,7 +28,7 @@ toggle_auto_backup() {
 
 remove_panel() {
   clear
-  read -p "Deseja remover o painel? (s/n) " rev
+  read -p "DESEJA REMOVER PAINEL? (s/n) " rev
   if [[ $rev = @(s|S) ]]; then
     echo "Removendo..."
     poff
@@ -47,7 +47,7 @@ restore_backup() {
     sleep 4
     menu
   fi
-  read -p "Deseja Restaurar o Backup? (s/n) " rapi
+  read -p "DESEJA RESTAURAR BACKUP? (s/n) " rapi
   if [[ $rapi = @(s|S) ]]; then
     echo "Restaurando..."
     cd /root/paineldtunnel || exit 1
@@ -70,14 +70,16 @@ restore_backup() {
 
 menu() {
   clear
-  echo "Bem-vindo ao painelMod menu"
-  echo 
-  echo "1. Fazer backup"
-  echo "2. Restaurar backup"
-  echo "3. Reiniciar painel"
-  echo "4. Ativar Auto backup"
-  echo "5. Remover painel"
-  echo "0. Sair"
+  echo -e "\033[1;34m╔═════════════════════════════╗\033[0m"
+  echo -e "\033[1;34m║\033[1;41m\033[1;32m      MENU PAINEL DTUNNEL-MOD     \033[0m\033[1;34m║"
+  echo -e "\033[1;34m║═════════════════════════════║\033[0m" 
+  echo -e "\033[1;34m║\033[1;36m[\033[1;32m01\033[1;36m] \033[1;32m• \033[1;31mFAZER BACKUP          \033[1;34m║"
+  echo -e "\033[1;34m║\033[1;36m[\033[1;32m02\033[1;36m] \033[1;32m• \033[1;31mRESTAURAR BACKUP      \033[1;34m║"
+  echo -e "\033[1;34m║\033[1;36m[\033[1;32m03\033[1;36m] \033[1;32m• \033[1;31mREINICIAR PAINEL      \033[1;34m║"
+  echo -e "\033[1;34m║\033[1;36m[\033[1;32m04\033[1;36m] \033[1;32m• \033[1;31mATIVAR AUTO BACKUP    \033[1;34m║"
+  echo -e "\033[1;34m║\033[1;36m[\033[1;32m05\033[1;36m] \033[1;32m• \033[1;31mREMOVER PAINEL        \033[1;34m║"
+  echo -e "\033[1;34m║\033[1;36m[\033[1;32m07\033[1;36m] \033[1;32m• \033[1;31mSAIR                  \033[1;34m║"
+  echo -e "\033[1;34m╚═════════════════════════════╝\033[0m"
   read -p "> " resp
   case $resp in
     1) do_backup ;;
