@@ -95,10 +95,5 @@ echo -ne "\n\033[1;31mENTER \033[1;33mPara Retornar \033[1;32mAo Prompt! \033[0m
 cat /dev/null > ~/.bash_history && history -c
 rm -rf wget-log* > /dev/null 2>&1
 rm install* > /dev/null 2>&1
-sllep 3
-esac
-done
-}
+sleep 3
 menudt
-#fim
-
