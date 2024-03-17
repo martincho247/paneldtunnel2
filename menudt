@@ -45,7 +45,7 @@ restore_backup() {
   if [[ ! -e /root/painelbackup.zip ]]; then
     echo "Arquivo painelbackup.zip não encontrado em /root"
     sleep 4
-    menu
+    menudt
   fi
   read -p "DESEJA RESTAURAR BACKUP? (s/n) " rapi
   if [[ $rapi = @(s|S) ]]; then
@@ -61,11 +61,11 @@ restore_backup() {
     echo "Backup restaurado com sucesso!"
     exit 0
   elif [[ $rapi = @(n|N) ]]; then
-    echo "Voltando para o menu"
+    echo "Voltando para o menudt"
     sleep 2
-    menu
+    menudt
   fi
-  menu
+  menudt
 }
 
 menu() {
@@ -94,8 +94,9 @@ menu() {
     ;;
     3) 
     clear
-    echo "Reiniciando..."; pon; 
-    echo "Reiniciado com sucesso!"; 
+    echo "Reiniciando...
+    pon
+    echo "Reiniciado com sucesso!
     sleep 3 
     ;;
     4) 
@@ -105,15 +106,14 @@ menu() {
     remove_panel 
     ;;
     0) 
-    echo "Saindo..."; 
+    echo "Saindo...
     exit 0 
     ;;
     *) 
-    echo "Opção inválida!"; 
+    echo "Opção inválida!
     sleep 3 
     ;;
 esac
 done
 }
 menudt
-#fim
