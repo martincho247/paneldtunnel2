@@ -17,8 +17,9 @@
 apt update -y; apt install wget -y; wget https://raw.githubusercontent.com/PhoenixxZ2023/paineldtunnel/main/install.sh; chmod 777 install.sh; ./install.sh
 ````
 
+
 ✅ Adicionado um menu simples <br>
-• para acessar digite ```menuop``` <br>
+• para acessar digite ```menudt``` <br>
 • Comando pra ativar/reiniciar ```pon``` <br>
 • Comando para desativar ```poff``` <br>
 
