@@ -3,71 +3,76 @@
 do_backup() {
   clear
   echo "Fazendo backup..."
-  cd /root/paineldtunnel || exit 1
-  cp prisma/database.db /root/painelbackup || exit 1
-  cp .env /root/painelbackup || exit 1
-  zip -r /root/painelbackup.zip /root/painelbackup || exit 1
+  cd /root/paineldtunnel
+  #rm -r painelbackup > /dev/null
+  #mkdir painelbackup > /dev/null
+  cp prisma/database.db painelbackup
+  cp .env painelbackup
+  zip -r painelbackup.zip painelbackup
+  mv painelbackup.zip /root
   echo
-  echo "Backup salvo em /root/painelbackup.zip"
+  echo "painelbackup.zip salvo em /root"
   echo
   exit 0
 }
-
 toggle_auto_backup() {
   clear
   read -p "DESEJA ATIVAR AUTO BACKUP? (s/n) " atb
-  if [[ $atb = @(s|S) ]]; then
-    echo "Ativando..."
+  [[ $atb = @(s|S) ]] && {
+    echo "Ativando...."
     backmod
     echo
-    echo "Backup a cada 5 horas ativado!"
+    echo "Backup de 5 em 5 horas ativo!"
     exit 0
-  fi
+  }
   menudt
 }
-
 remove_panel() {
   clear
-  read -p "DESEJA REMOVER PAINEL? (s/n) " rev
-  if [[ $rev = @(s|S) ]]; then
+  read -p "DESEJA REMOVER O PAINEL? (s/n) " rev
+  [[ $rev = @(s|S) ]] && {
     echo "Removendo..."
     poff
     rm /bin/pon /bin/poff /bin/menudt /bin/backmod
     rm -r /root/paineldtunnel
     echo "Removido com sucesso!"
     exit 0
-  fi
+  }
   menudt
 }
-
 restore_backup() {
   clear
-  if [[ ! -e /root/painelbackup.zip ]]; then
+  [[ ! -e /root/painelbackup.zip ]] && {
     echo "Arquivo painelbackup.zip não encontrado em /root"
     sleep 4
     menudt
-  fi
-  read -p "DESEJA RESTAURAR BACKUP? (s/n) " rapi
-  if [[ $rapi = @(s|S) ]]; then
+  }
+  read -p "Deseja Restaurar o Backup? (s/n) " rapi
+  [[ $rapi = @(s|S) ]] && {
     echo "Restaurando..."
-    cd /root/paineldtunnel || exit 1
-    rm prisma/database.db .env || exit 1
-    unzip /root/painelbackup.zip || exit 1
-    mv /root/painelbackup/database.db prisma/ || exit 1
-    mv /root/painelbackup/.env . || exit 1
-    rm -r /root/painelbackup
+    cd /root/paineldtunnel
+    rm prisma/database.db
+    rm .env
+    cd /root
+    unzip painelbackup.zip
+    cd painelbackup
+    mv database.db ../paineldtunnel/prisma
+    mv .env ../painelMod
+    cd /root
+    rm -r painelbackup
     pon
     echo
     echo "Backup restaurado com sucesso!"
     exit 0
-  elif [[ $rapi = @(n|N) ]]; then
-    echo "Voltando para o menudt"
+  }
+  [[ $rapi = @(n|N) ]] && {
+    echo "Voltando para o menu"
     sleep 2
     menudt
-  fi
+  }
   menudt
 }
-
+#[[ ! -e /root/painelMod/src/index.ts ]] && exit 0
 menudt() {
   clear
   echo -e "\033[1;34m╔═════════════════════════════╗\033[0m"
