@@ -1,6 +1,5 @@
 #!/bin/bash
 clear
-sitedwn=github.com/PhoenixxZ2023/paineldtunnel
 IP=$(wget -qO- ipv4.icanhazip.com)
 [[ "$(whoami)" != "root" ]] && {
 echo
@@ -46,17 +45,21 @@ echo "Instalando Painel Dtunnel Mod..."
 echo
 sleep 3
 #========================
-apt update -y
-apt-get update -y
-apt install wget -y
-apt install curl -y
-apt install zip -y
-apt install cron -y
-apt install unzip -y
-apt install screen -y
-apt install git -y
+sudo apt-get update -y
+sudo apt-get update -y
+sudo apt-get install wget -y
+sudo apt-get install curl -y
+sudo apt-get install zip -y
+sudo apt-get install npm -y
+npm install pm2 -g
+sudo apt-get install -y ca-certificates curl gnupg
+sudo mkdir -p /etc/apt/keyrings
+sudo apt-get install cron -y
+sudo apt-get install unzip -y
+sudo apt-get install screen -y
+sudo apt-get install git -y
 curl -fsSL https://deb.nodesource.com/setup_20.x | bash
-apt-get install -y nodejs -y
+sudo apt-get install -y nodejs -y
 #=========================
 git clone https://github.com/PhoenixxZ2023/paineldtunnel.git
 cd /root/paineldtunnel
@@ -75,6 +78,7 @@ echo "ENCRYPT_FILES=\"7223fd56-e21d-4191-8867-f3c67601122a\"" >> .env
 npm install
 npx prisma generate
 npx prisma migrate deploy
+npm run start
 #=========================
 clear
 echo
