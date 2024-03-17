@@ -89,7 +89,7 @@ echo -e "\033[1;36mDigite comando: \033[1;37mmenudt \033[1;32m(Para acessar o Me
 echo
 rm /root/install.sh
 pon
-echo -e "\033[1;36mSEU PAINEL: \033[1;37m http://$IP\033[0m"
+echo -e "\033[1;36mSEU PAINEL:\033[1;37m http://$IP\033[0m"
 echo
 echo -ne "\n\033[1;31mENTER \033[1;33mPara Retornar \033[1;32mAo Prompt! \033[0m"; read
 cat /dev/null > ~/.bash_history && history -c
