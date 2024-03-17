@@ -98,9 +98,12 @@ menu() {
     pon
     echo "Reiniciado com sucesso!
     sleep 3 
+    menudt
     ;;
     4) 
-    toggle_auto_backup 
+    toggle_auto_backup
+    sleep 3
+    menudt
     ;;
     5) 
     remove_panel 
@@ -111,7 +114,9 @@ menu() {
     clear
     exit;
     ;;
-    *) echo "Opção inválida!"; sleep 3 
+    *) 
+    echo "Opção inválida!"
+    sleep 3 
     ;;
   esac
 }
