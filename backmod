@@ -18,7 +18,7 @@ if ! crontab -l | grep -q "0 */5 * * * backmod"; then
 fi
 
 # Copiar arquivos para o diretório de backup
-if cp /root/painelMod/prisma/database.db /root/paineldtunnel/.env /root/paineldtunnel/painelbackup; then
+if cp /root/paineldtunnel/prisma/database.db /root/paineldtunnel/.env /root/paineldtunnel/painelbackup; then
     echo "Arquivos copiados com sucesso"
 else
     echo "Erro ao copiar arquivos"
