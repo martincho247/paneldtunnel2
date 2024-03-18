@@ -14,9 +14,8 @@ do_backup() {
   echo "painelbackup.zip salvo em /root"
   echo
   exit 0
- }
- menudt
 }
+
 toggle_auto_backup() {
   clear
   read -p "DESEJA ATIVAR AUTO BACKUP? (s/n) " atb
@@ -29,6 +28,7 @@ toggle_auto_backup() {
   }
   menudt
 }
+
 remove_panel() {
   clear
   read -p "DESEJA REMOVER O PAINEL? (s/n) " rev
@@ -42,6 +42,7 @@ remove_panel() {
   }
   menudt
 }
+
 restore_backup() {
   clear
   [[ ! -e /root/painelbackup.zip ]] && {
