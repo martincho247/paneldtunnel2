@@ -49,11 +49,11 @@ sudo apt-get update -y
 sudo apt-get update -y
 sudo apt-get install wget -y
 sudo apt-get install curl -y
-sudo apt-get install zip -y
-sudo apt-get install npm -y > /dev/null
-npm install pm2 -g > /dev/null 
+sudo apt-get install zip -y > /dev/null 2>&1
+sudo apt-get install npm -y > /dev/null 2>&1
+npm install pm2 -g > /dev/null 2>&1
 sudo apt-get install cron -y
-sudo apt-get install unzip -y > /dev/null
+sudo apt-get install unzip -y > /dev/null 2>&1
 sudo apt-get install screen -y
 sudo apt-get install git -y
 sudo apt-get install -y ca-certificates curl gnupg
@@ -63,7 +63,7 @@ NODE_MAJOR=21
 echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
 sudo apt-get update -y
 sudo apt-get upgrade -y
-sudo apt-get install nodejs -y > /dev/null 
+sudo apt-get install nodejs -y > /dev/null 2>&1
 #=========================
 git clone https://github.com/PhoenixxZ2023/paineldtunnel.git
 cd /root/paineldtunnel
