@@ -49,8 +49,8 @@ sudo apt-get update -y
 sudo apt-get update -y
 sudo apt-get install wget -y
 sudo apt-get install curl -y
-sudo apt-get install zip -y > /dev/null 2>&1
-npm install pm2 -g > /dev/null 2>&1
+sudo apt-get install zip -y > /dev/null 
+npm install pm2 -g > /dev/null 
 sudo apt-get install cron -y
 sudo apt-get install screen -y
 sudo apt-get install git -y
