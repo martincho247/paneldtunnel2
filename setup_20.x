@@ -32,63 +32,56 @@ command_exists() {
 }
 
 check_os() {
-    if ! [ -f "/etc/debian_version" ]; then
-        echo "Error: This script is only supported on Debian-based systems."
-        exit 1
-    fi
+  if ! [ -f "/etc/debian_version" ]; then
+    handle_error "1" "This script is only supported on Debian-based systems."
+  fi
 }
 
 # Function to Install the script pre-requisites
 install_pre_reqs() {
-    log "Installing pre-requisites" "info"
+  log "Installing pre-requisites" "info"
 
-    # Run 'apt-get update'
-    if ! apt-get update -y; then
-        handle_error "$?" "Failed to run 'apt-get update'"
-    fi
+  if ! apt-get update -y; then
+    handle_error "$?" "Failed to run 'apt-get update'. Please check your internet connection or repository configuration."
+  fi
 
-    # Run 'apt-get install'
-    if ! apt-get install -y apt-transport-https ca-certificates curl gnupg; then
-        handle_error "$?" "Failed to install packages"
-    fi
+  if ! apt-get install -y apt-transport-https ca-certificates curl gnupg; then
+    handle_error "$?" "Failed to install packages"
+  fi
 
-    mkdir -p /usr/share/keyrings
-    rm -f /usr/share/keyrings/nodesource.gpg
-    rm -f /etc/apt/sources.list.d/nodesource.list
+  mkdir -p /usr/share/keyrings
+  rm -f /usr/share/keyrings/nodesource.gpg
+  rm -f /etc/apt/sources.list.d/nodesource.list
 
-    # Run 'curl' and 'gpg'
-    if ! curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /usr/share/keyrings/nodesource.gpg; then
-      handle_error "$?" "Failed to download and import the NodeSource signing key"
-    fi
+  if ! curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /usr/share/keyrings/nodesource.gpg; then
+    handle_error "$?" "Failed to download and import the NodeSource signing key"
+  fi
 }
 
 # Function to configure the Repo
 configure_repo() {
-    local node_version=$1
+  local node_version=$1
 
-    arch=$(dpkg --print-architecture)
-    if [ "$arch" != "amd64" ] && [ "$arch" != "arm64" ] && [ "$arch" != "armhf" ]; then
-      handle_error "1" "Unsupported architecture: $arch. Only amd64, arm64, and armhf are supported."
-    fi
+  arch=$(dpkg --print-architecture)
+  if ! [[ "$arch" =~ ^(amd64|arm64|armhf)$ ]]; then
+    handle_error "1" "Unsupported architecture: $arch. Only amd64, arm64, and armhf are supported."
+  fi
 
-    echo "deb [arch=$arch signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$node_version nodistro main" | tee /etc/apt/sources.list.d/nodesource.list > /dev/null
+  echo "deb [arch=$arch signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$node_version nodistro main" | tee /etc/apt/sources.list.d/nodesource.list > /dev/null
 
-    # N|solid Config
-    echo "Package: nsolid" | tee /etc/apt/preferences.d/nsolid > /dev/null
-    echo "Pin: origin deb.nodesource.com" | tee -a /etc/apt/preferences.d/nsolid > /dev/null
-    echo "Pin-Priority: 600" | tee -a /etc/apt/preferences.d/nsolid > /dev/null
+  echo "Package: nsolid" | tee /etc/apt/preferences.d/nsolid > /dev/null
+  echo "Pin: origin deb.nodesource.com" | tee -a /etc/apt/preferences.d/nsolid > /dev/null
+  echo "Pin-Priority: 600" | tee -a /etc/apt/preferences.d/nsolid > /dev/null
 
-    # Nodejs Config
-    echo "Package: nodejs" | tee /etc/apt/preferences.d/nodejs > /dev/null
-    echo "Pin: origin deb.nodesource.com" | tee -a /etc/apt/preferences.d/nodejs > /dev/null
-    echo "Pin-Priority: 600" | tee -a /etc/apt/preferences.d/nodejs > /dev/null
+  echo "Package: nodejs" | tee /etc/apt/preferences.d/nodejs > /dev/null
+  echo "Pin: origin deb.nodesource.com" | tee -a /etc/apt/preferences.d/nodejs > /dev/null
+  echo "Pin-Priority: 600" | tee -a /etc/apt/preferences.d/nodejs > /dev/null
 
-    # Run 'apt-get update'
-    if ! apt-get update -y; then
-        handle_error "$?" "Failed to run 'apt-get update'"
-    else
-        log "Repository configured successfully. To install Node.js, run: apt-get install nodejs -y" "success"
-    fi
+  if ! apt-get update -y; then
+    handle_error "$?" "Failed to run 'apt-get update'"
+  else
+    log "Repository configured successfully. To install Node.js, run: apt-get install nodejs -y" "success"
+  fi
 }
 
 # Define Node.js version
