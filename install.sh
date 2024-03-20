@@ -53,7 +53,6 @@ sudo apt-get install zip -y > /dev/null 2>&1
 sudo apt-get install npm -y > /dev/null 2>&1
 npm install pm2 -g > /dev/null 2>&1
 sudo apt-get install cron -y
-sudo apt-get install unzip -y > /dev/null 2>&1
 sudo apt-get install screen -y
 sudo apt-get install git -y
 sudo apt-get install -y ca-certificates curl gnupg
