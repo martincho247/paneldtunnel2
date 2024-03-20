@@ -82,7 +82,6 @@ echo "ENCRYPT_FILES=\"7223fd56-e21d-4191-8867-f3c67601122a\"" >> .env
 npm install
 npx prisma generate
 npx prisma migrate deploy
-npm run start
 #=========================
 clear
 echo
