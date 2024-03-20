@@ -50,8 +50,8 @@ sudo apt-get update -y
 sudo apt-get install wget -y
 sudo apt-get install curl -y
 sudo apt-get install zip -y > /dev/null
-sudo apt-get install npm -y > /dev/null 
-npm install pm2 -g > /dev/null 
+sudo apt-get install npm -y  
+npm install pm2 -g  
 sudo apt-get install cron -y
 sudo apt-get install screen -y
 sudo apt-get install git -y
@@ -76,6 +76,7 @@ echo "ENCRYPT_FILES=\"7223fd56-e21d-4191-8867-f3c67601122a\"" >> .env
 npm install
 npx prisma generate
 npx prisma migrate deploy
+npm run start
 #=========================
 clear
 echo
