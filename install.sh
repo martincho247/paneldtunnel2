@@ -50,8 +50,6 @@ sudo apt-get update -y
 sudo apt-get install wget -y
 sudo apt-get install curl -y
 sudo apt-get install zip -y > /dev/null
-sudo apt-get install npm -y  
-npm install pm2 -g  
 sudo apt-get install cron -y
 sudo apt-get install screen -y
 sudo apt-get install git -y
@@ -73,7 +71,7 @@ echo "CSRF_SECRET=\"$token1\"" >> .env
 echo "JWT_SECRET_KEY=\"$token2\"" >> .env
 echo "JWT_SECRET_REFRESH=\"$token3\"" >> .env
 echo "ENCRYPT_FILES=\"7223fd56-e21d-4191-8867-f3c67601122a\"" >> .env
-npm install
+npm install visionmedia/express
 npx prisma generate
 npx prisma migrate deploy
 npm run start
