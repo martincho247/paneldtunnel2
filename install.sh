@@ -50,7 +50,7 @@ sudo apt-get update -y
 sudo apt-get install wget -y
 sudo apt-get install curl -y
 sudo apt-get install zip -y
-wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash && export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion" && nvm install 16
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash && export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion" && nvm install 18
 sudo apt-get install cron -y
 sudo apt-get install screen -y
 sudo apt-get install git -y
@@ -72,7 +72,7 @@ echo "CSRF_SECRET=\"$token1\"" >> .env
 echo "JWT_SECRET_KEY=\"$token2\"" >> .env
 echo "JWT_SECRET_REFRESH=\"$token3\"" >> .env
 echo "ENCRYPT_FILES=\"7223fd56-e21d-4191-8867-f3c67601122a\"" >> .env
-npm install -g npm@10.5.0
+npm install
 npx prisma generate
 npx prisma migrate deploy
 npm run start
