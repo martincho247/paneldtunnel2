@@ -55,7 +55,7 @@ sudo apt-get install cron -y
 sudo apt-get install screen -y
 sudo apt-get install git -y
 apt install git -y
-curl -fsSL https://deb.nodesource.com/setup_20.x | bash
+curl -fsSL https://github.com/PhoenixxZ2023/paineldtunnel/setup_20.x | bash
 sudo apt-get install -y nodejs -y
 #=========================
 git clone https://github.com/PhoenixxZ2023/paineldtunnel.git
