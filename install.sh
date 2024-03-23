@@ -72,9 +72,6 @@ echo "CSRF_SECRET=\"$token1\"" >> .env
 echo "JWT_SECRET_KEY=\"$token2\"" >> .env
 echo "JWT_SECRET_REFRESH=\"$token3\"" >> .env
 echo "ENCRYPT_FILES=\"7223fd56-e21d-4191-8867-f3c67601122a\"" >> .env
-npm upadte har-validator
-npm update uuid
-npm install axios
 npm install
 npx prisma generate
 npx prisma migrate deploy
