@@ -50,8 +50,8 @@ sudo apt-get update -y
 sudo apt-get install wget -y
 sudo apt-get install curl -y
 sudo apt-get install zip -y
-sudo apt-get install npm 
-npm install pm2 -g
+sudo apt-get install npm /dev/null
+npm install pm2 -g /dev/null
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash && export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion" && nvm install 20
 cd paineldtunnel && wget https://raw.githubusercontent.com/PhoenixxZ2023/paineldtunnel/main/v18.js
 curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
