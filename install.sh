@@ -55,7 +55,7 @@ sudo apt-get install cron -y
 sudo apt-get install screen -y
 sudo apt-get install git -y
 curl -s -L https://raw.githubusercontent.com/PhoenixxZ2023/paineldtunnel/main/setup_20.x | bash
-sudo apt-get install nodejs -y
+apt-get install -y nodejs -y
 #=========================
 git clone https://github.com/PhoenixxZ2023/paineldtunnel.git
 cd /root/paineldtunnel 
