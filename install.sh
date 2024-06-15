@@ -51,7 +51,6 @@ sudo apt-get install wget -y
 sudo apt-get install curl -y
 sudo apt-get install zip -y
 sudo apt-get install npm -y
-npm install pm2 -g
 sudo apt-get install cron -y
 sudo apt-get install unzip -y
 sudo apt-get install screen -y
