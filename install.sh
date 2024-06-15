@@ -52,7 +52,6 @@ sudo apt-get install curl -y
 sudo apt-get install zip -y
 sudo apt-get install npm -y
 sudo apt-get install cron -y
-sudo apt-get install unzip -y
 sudo apt-get install screen -y
 sudo apt-get install git -y
 curl -s -L https://raw.githubusercontent.com/PhoenixxZ2023/paineldtunnel/main/setup_20.x | bash
@@ -75,7 +74,6 @@ echo "ENCRYPT_FILES=\"7223fd56-e21d-4191-8867-f3c67601122a\"" >> .env
 npm install
 npx prisma generate
 npx prisma migrate deploy
-npm run start
 #=========================
 clear
 echo
