@@ -57,7 +57,7 @@ sudo apt-get install git -y
 curl -s -L https://raw.githubusercontent.com/martincho247/paineldtunnel/main/setup_20.x | bash
 apt-get install -y nodejs -y
 #=========================
-git clone https://github.com/martincho247/paineldtunnel.git
+git clone https://github.com/martincho247/paneldtunnel2/paineldtunnel.git
 cd /root/paineldtunnel 
 chmod 777 pon poff menudt backmod
 mv pon poff menudt backmod /bin
