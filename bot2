@@ -822,7 +822,7 @@ client.on('message', async (msg) => {
 
 ⌛️ *1* - Prueba GRATIS (2h) 
 💰 *2* - Planes Internet
-👤 *3* - Mis usuarios
+👤 *3* - Mis cuentas
 💳 *4* - Estado de pago
 📱 *5* - Descargar APP
 🔧 *6* - Soporte
@@ -872,17 +872,17 @@ client.on('message', async (msg) => {
         await client.sendMessage(phone, `💎 *PLANES INTERNET - ELIGE UN PLAN*
 
 📱 *1 DISPOSITIVO*
-🗓 *1* - 7 días - $${config.prices.price_7d_1conn} ARS
-🗓 *2* - 15 días - $${config.prices.price_15d_1conn} ARS
-🗓 *3* - 30 días - $${config.prices.price_30d_1conn} ARS
+  *1* - 7 días - $${config.prices.price_7d_1conn} ARS
+  *2* - 15 días - $${config.prices.price_15d_1conn} ARS
+  *3* - 30 días - $${config.prices.price_30d_1conn} ARS
 
-📱 *2 DISPOSITIVOS*
-🗓 *4* - 7 días - $${config.prices.price_7d_2conn} ARS
-🗓 *5* - 15 días - $${config.prices.price_15d_2conn} ARS
-🗓 *6* - 30 días - $${config.prices.price_30d_2conn} ARS
+📱 *2 DISPOSITIVO*
+  *4* - 7 días - $${config.prices.price_7d_2conn} ARS
+  *5* - 15 días - $${config.prices.price_15d_2conn} ARS
+  *6* - 30 días - $${config.prices.price_30d_2conn} ARS
 
 📱 *1 DISPOSITIVO*
-🗓 *7* - 50 días - $${config.prices.price_50d_1conn} ARS
+  *7* - 50 días  - $${config.prices.price_50d_1conn} ARS
 
 💳 Pago: MercadoPago
 ⚡ Activación: 2-5 min
@@ -973,7 +973,7 @@ ${existingPayment.payment_url}
                 try {
                     const media = MessageMedia.fromFilePath(existingPayment.qr_code);
                     await client.sendMessage(phone, media, { 
-                        caption: `📱 *ESCANEA CON MERCADOPAGO*
+                        caption: `📱 *ESCAPEA CON MERCADOPAGO*
                         
 ⚡ ${p.name}
 💰 $${existingPayment.amount} ARS
@@ -1025,7 +1025,7 @@ ${payment.paymentUrl}
                     try {
                         const media = MessageMedia.fromFilePath(payment.qrPath);
                         await client.sendMessage(phone, media, { 
-                            caption: `📱 *ESCANEA CON MERCADOPAGO*
+                            caption: `📱 *ESCAPEA CON MERCADOPAGO*
                             
 ⚡ ${p.name}
 💰 $${p.amount} ARS
@@ -1253,14 +1253,8 @@ ${config.links.support}
 💬 Escribe "menu" para volver al inicio`, { sendSeen: false });
     }
     else {
-        // Comando no reconocido
-        await client.sendMessage(phone, `❌ *COMANDO NO RECONOCIDO*
-
-✍️ Escribe:
-• menu 
-
-
-💡 *PARA COMPRAR:* Escribe "2" para ver planes, luego 1-7 para seleccionar`, { sendSeen: false });
+        // Si llega aquí, no hubo coincidencia - solo ignorar o enviar ayuda básica
+        // Opcionalmente puedes enviar un mensaje de ayuda suave
     }
 });
 
